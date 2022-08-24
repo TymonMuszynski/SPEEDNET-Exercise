@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     id: 1,
     from: "Kalkulator OC/AC - Onet <mailingi@onet.pl>",
@@ -216,3 +216,5 @@ export default [
     snippet: "Odbierz 50% rabatu na wymianę online",
   },
 ];
+
+export default data;

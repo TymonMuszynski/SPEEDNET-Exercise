@@ -16,15 +16,15 @@ function InfoBox(props) {
   const { from, sentDate, subject, snippet } = getBoxData();
 
   return (
-    <div className=" absolute w-[95vw] h-[95vh] rounded-xl bg-white flex flex-col items-center">
-      <Link to={"/boxes?page=" + props.pageNumber}>
+    <div className="absolute w-[95vw] h-[95vh] rounded-xl bg-white flex flex-col items-center">
+      <Link to={`/boxes?page=${props.pageNumber}`}>
         <div className="w-[90vw] h-[5vh] flex justify-left items-center mt-4">
           <img
             src={backSvg}
             alt="back arrow"
             className="w-[4.5vw] sm:w-[2.8vw]"
           />
-          <span className=" text-2xl font-light ml-3"> back </span>
+          <span className="text-2xl font-light ml-3"> back </span>
         </div>
       </Link>
 

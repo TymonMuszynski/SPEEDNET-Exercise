@@ -25,17 +25,17 @@ function Pagination(props) {
 
   return (
     <div className="w-[95vw]  sm:w-[30vw] h-[6vh] bg-white flex items-center rounded-xl justify-around">
-      <img src={backSvg} alt="back arrow" className=" h-1/3" />
+      <img src={backSvg} alt="back arrow" className="h-1/3" />
       <Link to={createUrl(false)}>
-        <span className=" font-light text-xl"> back</span>
+        <span className="font-light text-xl"> back</span>
       </Link>
-      <span className=" font-light text-xl">
+      <span className="font-light text-xl">
         {parseInt(pageNumber) + 1} / {numberOfPages + 1}
       </span>
       <Link to={createUrl(true)}>
-        <span className=" font-light text-xl "> next</span>
+        <span className="font-light text-xl "> next</span>
       </Link>
-      <img src={nextSvg} alt="next arrow" className=" h-1/3" />
+      <img src={nextSvg} alt="next arrow" className="h-1/3" />
     </div>
   );
 }

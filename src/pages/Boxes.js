@@ -12,7 +12,7 @@ function ListBox(props) {
     return React.useMemo(() => new URLSearchParams(search), [search]);
   }
 
-  //change state value of page to url id when page rendered
+  // Change state value of page to url id when page rendered
   useEffect(() => {
     handlePageNumber(query.get("page"));
   });
@@ -28,7 +28,7 @@ function ListBox(props) {
     ));
 
   return (
-    <div className=" sm:w-[80vw] w-[95vw] h-[80vh] bg-white rounded-2xl flex justify-center items-center">
+    <div className="sm:w-[80vw] w-[95vw] h-[80vh] bg-white rounded-2xl flex justify-center items-center">
       <ul className="flex items-center justify-start flex-col h-[70vh]  ">
         {mappedBoxComponent}
       </ul>

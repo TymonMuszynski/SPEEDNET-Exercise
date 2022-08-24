@@ -12,26 +12,26 @@ function Box({
   const { pathname } = useLocation();
 
   return (
-    <li className=" sm:w-[73vw] w-[88vw] flex h-[6vh] items-center justify-left border-t-2 border-gray-300 last:border-b-2 hover:bg-gray-100">
+    <li className="sm:w-[73vw] w-[88vw] flex h-[6vh] items-center justify-left border-t-2 border-gray-300 last:border-b-2 hover:bg-gray-100">
       {isUnread === true ? (
         <img
           src={unCheckedSvg}
-          alt="1"
+          alt="unchecked"
           onClick={() => handleChangeCheckBox(id)}
-          className=" w-[7vw] sm:w-[3vw] cursor-pointer max-w-[35px] "
+          className="w-[7vw] sm:w-[3vw] cursor-pointer max-w-[35px] "
         />
       ) : (
         <img
           src={checkedSvg}
-          alt="2"
+          alt="check" // alty lepsze
           onClick={() => handleChangeCheckBox(id)}
-          className=" w-[7vw] sm:w-[3vw] cursor-pointer  max-w-[35px] "
+          className="w-[7vw] sm:w-[3vw] cursor-pointer  max-w-[35px] "
         />
       )}
-      <Link to={pathname + "/box/" + id}>
+      <Link to={`${pathname}"/box/"${id}`}>
         <div className="w-[75vw] sm:w-[65vw] flex flex-col">
-          <div className=" ml-3 w-full ">
-            <span className=" text-sm font-bold sm:text-l "> {from}</span>
+          <div className="ml-3 w-full ">
+            <span className="text-sm font-bold sm:text-l "> {from}</span>
           </div>
           <div className="ml-3 w-full">
             <span className="text-sm"> {snippet}</span>
