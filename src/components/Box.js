@@ -23,7 +23,7 @@ function Box({
       ) : (
         <img
           src={checkedSvg}
-          alt="check" // alty lepsze
+          alt="check"
           onClick={() => handleChangeCheckBox(id)}
           className="w-[7vw] sm:w-[3vw] cursor-pointer  max-w-[35px] "
         />
