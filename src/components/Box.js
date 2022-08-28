@@ -28,7 +28,7 @@ function Box({
           className="w-[7vw] sm:w-[3vw] cursor-pointer  max-w-[35px] "
         />
       )}
-      <Link to={`${pathname}"/box/"${id}`}>
+      <Link to={`${pathname}/box/${id}`}>
         <div className="w-[75vw] sm:w-[65vw] flex flex-col">
           <div className="ml-3 w-full ">
             <span className="text-sm font-bold sm:text-l "> {from}</span>
