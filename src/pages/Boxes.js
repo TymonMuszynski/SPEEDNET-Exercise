@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router";
 
 import Box from "../components/Box";
 
-function ListBox(props) {
-  const { data, handleChangeCheckBox, pageNumber, handlePageNumber } = props;
+function Boxes(props) {
+  const { data, handleChangeCheckBox } = props;
   const { search } = useLocation();
   const query = useQuery();
+  const pageNumber = query.get("page")
+
 
   function useQuery() {
     return React.useMemo(() => new URLSearchParams(search), [search]);
   }
 
+
+  // console.log(`BOXES page number: ${pageNumber} - rendered`);
   // Change state value of page to url id when page rendered
-  useEffect(() => {
-    handlePageNumber(query.get("page"));
-  });
 
   const mappedBoxComponent = data
     .slice(pageNumber * 12, pageNumber * 12 + 12)
@@ -36,4 +37,4 @@ function ListBox(props) {
   );
 }
 
-export default ListBox;
+export default React.memo(Boxes);

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useCallback, useState } from "react";
+import { BrowserRouter, Route, Routes  } from "react-router-dom";
 import humps from "humps";
 import dataFromFile from "./data/data.js";
 
@@ -14,27 +14,35 @@ import Counter from "./components/Counter.js";
 function App() {
   const [data, setData] = useState(humps.camelizeKeys(dataFromFile));
   const [page, setPage] = useState(0);
-  const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    setCounter(0);
+  const countBoxes = () =>{
+    let helpCounter  = 0
     for (let index = 0; index < data.length; index++) {
       if (!!data[index].isUnread === false) {
-        setCounter((prevCounter) => (prevCounter += 1));
+        helpCounter += 1
       }
-    }
-  }, [data]);
+    }  
+    return helpCounter 
+  }
+  const [counter, setCounter] = useState(countBoxes);
 
-  // change check box value
+  // console.log("APP - rendered");
+
+  // change check box value and 
   const changeCheckBox = (id) => {
-    setData((prevData) => {
-      return prevData.map((prevBoxData) =>
-        prevBoxData.id === id
-          ? { ...prevBoxData, isUnread: !prevBoxData.isUnread }
-          : prevBoxData
-      );
-    });
-  };
+  setData((prevData) => {
+    return prevData.map((prevBoxData) =>
+      prevBoxData.id === id
+        ? { ...prevBoxData, isUnread: !prevBoxData.isUnread }
+        : prevBoxData
+    );
+  });
+  setCounter(countBoxes);
+}
+
+const changePageNumber = useCallback ((pageNumber) =>{
+  setPage(pageNumber)
+}, [])
 
   return (
     <BrowserRouter>
@@ -48,18 +56,16 @@ function App() {
               <Boxes
                 data={data}
                 handleChangeCheckBox={changeCheckBox}
-                handlePageNumber={(pageNumber) => setPage(pageNumber)}
-                pageNumber={page}
               />
             }
           />
           <Route
             path="boxes/box/:id"
-            element={<InfoBox pageNumber={page} data={data} />}
+            element={<InfoBox pageNumber={page} />}
           />
         </Routes>
 
-        <Pagination data={data} pageNumber={page} />
+        <Pagination pageNumber={page} handlePageNumber={changePageNumber}/>
       </div>
     </BrowserRouter>
   );

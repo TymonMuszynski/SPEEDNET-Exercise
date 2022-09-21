@@ -10,6 +10,8 @@ function Box({
   handleChangeCheckBox,
 }) {
   const { pathname } = useLocation();
+  
+  // console.log(`BOX ${id} - rendered`);
 
   return (
     <li className="sm:w-[73vw] w-[88vw] flex h-[6vh] items-center justify-left border-t-2 border-gray-300 last:border-b-2 hover:bg-gray-100">
@@ -42,4 +44,4 @@ function Box({
   );
 }
 
-export default Box;
+export default React.memo(Box);

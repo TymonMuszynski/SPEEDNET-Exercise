@@ -1,21 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Link, useLocation} from "react-router-dom";
+import data from "../data/data"
 import nextSvg from "../assets/next.svg";
 import backSvg from "../assets/back.svg";
 
 function Pagination(props) {
-  const { data, pageNumber } = props;
+  const {handlePageNumber} = props
   const numberOfPages = Math.round(data.length / 12);
+  const { search } = useLocation();
+  const query = useQuery();
+  const pageNumber = query.get("page")
+
+
+  function useQuery() {
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+
+useEffect(()=>{
+  handlePageNumber(pageNumber)
+},[])
+
+
+
+  // console.log("PAGINATION - rendered")
+
 
   const createUrl = (goNext) => {
-    if (goNext === true) {
+
+    if (goNext === true && pageNumber != null) {
       if (pageNumber >= numberOfPages) {
         return "boxes?page=" + pageNumber.toString();
       } else {
         return "boxes?page=" + (parseInt(pageNumber) + 1).toString();
       }
     } else {
-      if (pageNumber <= 0) {
+      if (pageNumber <= 0 && pageNumber != null) {
         return "boxes?page=" + pageNumber.toString();
       } else {
         return "boxes?page=" + (parseInt(pageNumber) - 1).toString();
@@ -40,4 +59,4 @@ function Pagination(props) {
   );
 }
 
-export default Pagination;
+export default React.memo(Pagination);

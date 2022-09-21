@@ -1,14 +1,16 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import backSvg from "../assets/back.svg";
+import data from "../data/data"
+import humps from "humps";
 
 function InfoBox(props) {
   const { id } = useParams();
-
+  
   function getBoxData() {
-    for (let index = 0; index < props.data.length; index++) {
-      if (parseInt(id) === props.data[index].id) {
-        return props.data[index];
+    for (let index = 0; index < data.length; index++) {
+      if (parseInt(id) === data[index].id) {
+        return humps.camelizeKeys(data[index]);
       }
     }
   }
