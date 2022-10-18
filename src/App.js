@@ -28,7 +28,7 @@ function App() {
 
   // console.log("APP - rendered");
 
-  // change check box value and 
+  // change check box value 
   const changeCheckBox = (id) => {
   setData((prevData) => {
     return prevData.map((prevBoxData) =>
